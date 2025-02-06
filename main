@@ -1,0 +1,32 @@
+import csv
+import os
+from PyPDF2 import PdfReader
+
+
+pathlist = []
+
+
+file = '/home/dan/Desktop/readthis/Daniel_Beale_-_.pdf'
+file1 = '/home/dan/Desktop/readthis/dan.pdf'
+file2 = '/home/dan/Desktop/readthis/mando.pdf'
+
+files = [file,file1,file2]
+
+
+for i in files:
+    reader = PdfReader(i)
+
+    print(len(reader.pages))
+
+
+
+
+
+"""
+path = '/home/dan/Desktop/readthis'
+newpath = os.listdir(path)
+for i in newpath:
+    pathlist.append(f"{path}"+i)
+
+print(pathlist)
+"""
