@@ -1,0 +1,24 @@
+thirdlist = []
+for text in textlist:
+    for item in text:
+        if item.strip():
+            thirdlist.append(item)
+
+
+thisdict = {'Version':1,'Effective':'10/6/2024'}
+
+thirdlist = []
+for text in textlist:
+    for item in text:
+        if item.strip():
+            thirdlist.append(item)
+
+
+
+for thing in thirdlist:
+    if thing.startswith('Version'):
+        thisdict['Version'] = thing
+    elif thing.startswith('Effective'):
+            thisdict['Effective'] = thing
+            print(thisdict)        
+
