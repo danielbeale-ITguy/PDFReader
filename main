@@ -24,22 +24,60 @@ for pdf in pathlist:
     page = reader.pages[0]
     new = page.extract_text()
     textlist.append(new.split(' \n'))
-    
-
-#print(page.extract_text())
 
 
+"""
+Versionlist = []
+for text in textlist:
+    for item in text:
+        if item.startswith('Version'):
+            Versionlist.append(item)
+print(Versionlist)
+"""
 
 
 
-#print(new)
-print(textlist)
+
+
+thirdlist = []
+for text in textlist:
+    for item in text:
+        if item.strip():
+            thirdlist.append(item)
+
+
+thisdict = {'Version':1,'Effective':'10/6/2024'}
+
+thirdlist = []
+for text in textlist:
+    for item in text:
+        if item.strip():
+            thirdlist.append(item) 
+
+
+fourlist = []
+field_names = ['Version','Effective']
 
 
 with open('dan.csv','w')as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerows(textlist)
+
+    for thing in thirdlist:
+        if thing.startswith('Version'):
+            thisdict['Version'] = thing
+        elif thing.startswith('Effective'):
+                thisdict['Effective'] = thing
+                fourlist.append(thisdict.copy())
+
+                writer = csv.DictWriter(csvfile, fieldnames=field_names)
+    writer.writerows(fourlist)
 
 
+print(fourlist)
 
-
+"""
+for key in ['Version','Effective']:
+    for thing in thirdlist:
+        if thing.startswith(key):
+            thisdict[key] = thing
+            print(thisdict)
+"""
